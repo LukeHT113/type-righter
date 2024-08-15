@@ -1,0 +1,127 @@
+.modal {
+  width: 100%;
+  max-width: 1280px;
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 8px;
+  z-index: 100;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: var(--text-color);
+}
+.close {
+  position: absolute;
+  right: 16px;
+  width: fit-content;
+  border: none;
+  background: none;
+  fill: var(--secondary-color);
+  cursor: pointer;
+}
+.close:hover {
+  fill: var(--text-color);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  color: var(--main-color);
+  fill: var(--main-color);
+  margin-top: 0;
+}
+.heading svg {
+  margin-right: 8px;
+}
+
+.section {
+  display: grid;
+  grid-template-areas:
+  "title buttons"
+  "text buttons";
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  row-gap: 8px;
+  column-gap: 32px;
+  margin: 16px 0;
+}
+.sectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  display: flex;
+  grid-area: title;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+  margin: 0;
+}
+.title svg {
+  margin-right: 4px;
+}
+.text {
+  grid-area: text;
+  font-size: 16px;
+  margin: 0;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 8px;
+  grid-area: buttons;
+}
+.buttonsList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  grid-area: buttons;
+}
+.button {
+  border-radius: 4px;
+  font-family: inherit;
+  border: none;
+  height: min-content;
+  padding: 12px 8px;
+  margin: auto 0;
+  font-size: 16px;
+  background-color: var(--secondary-alt-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+.buttonActive {
+  composes: button;
+  background-color: var(--main-color);
+  color: var(--bg-color);
+}
+
+.themeButton {
+  font-family: inherit;
+  border: none;
+  height: min-content;
+  padding: 12px 8px;
+  margin: auto 0;
+  font-size: 16px;
+  background-color: var(--secondary-alt-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+.themeButton:hover {
+  outline: 1px solid;
+}
+.themeButtonActive {
+  composes: themeButton;
+  outline: 1px solid;
+}

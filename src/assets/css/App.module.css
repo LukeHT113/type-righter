@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #323437;
+  --main-color: #e2b714;
+  --caret-color: #e2b714;
+  --secondary-color: #646669;
+  --secondary-alt-color: #2c2e31;
+  --text-color: #d1d0c5;
+  --error-color: #ca4754;
+  --error-extra-color: #7e2a33;
+
+  --font-family: "Inconsolata", monospace;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Themes */
+:root:has(.themeMatrix) {
+  --bg-color: #0c100e;
+  --main-color: #89c559;
+  --caret-color: #89c559;
+  --secondary-color: #436029;
+  --secondary-alt-color: #0f1d18;
+  --text-color: #f0edd1;
+  --error-color: #d3ca78;
+  --error-extra-color: #89844d;
+}
+:root:has(.themePeach) {
+  --bg-color: #ffede0;
+  --main-color: #fe5503;
+  --caret-color: #fe5503;
+  --secondary-color: #ff9562;
+  --secondary-alt-color: #fdd3bf;
+  --text-color: #3d1705;
+  --error-color: #FF0000;
+  --error-extra-color: #be0000;
+}
+:root:has(.themeParmaViolet) {
+  --bg-color: #fffbfe;
+  --main-color: #b94189;
+  --caret-color: #e099d6d9;
+  --secondary-color: #e094c2;
+  --secondary-alt-color: #ecdceed9;
+  --text-color: #5c2954;
+  --error-color: #ff6f69;
+  --error-extra-color: #bc7fc0;
+}
+:root:has(.themeDeepBlue) {
+  --bg-color: #1e1e1e;
+  --main-color: #007acc;
+  --caret-color: #569cd6;
+  --secondary-color: #4d4d4d;
+  --secondary-alt-color: #191919;
+  --text-color: #d4d4d4;
+  --error-color: #f44747;
+  --error-extra-color: #f44747;
+}
+:root:has(.themeSeaBreeze) {
+  --bg-color: #ffeead;
+  --main-color: #96ceb4;
+  --caret-color: #ffcc5c;
+  --secondary-color: #ffcc5c;
+  --secondary-alt-color: #f7dc8f;
+  --text-color: #5b7869;
+  --error-color: #ff6f69;
+  --error-extra-color: #ff6f69;
+}
+:root:has(.themeStrawberry) {
+  --bg-color: #f37f83;
+  --main-color: #fcfcf8;
+  --caret-color: #fcfcf8;
+  --secondary-color: #e53c58;
+  --secondary-alt-color: #ef6e77;
+  --text-color: #fcfcf8;
+  --error-color: #fcd23f;
+  --error-extra-color: #d7ae1e;
+}
+:root:has(.themeSmoulder) {
+  --bg-color: #1a0b0c;
+  --main-color: #ff3a32;
+  --caret-color: #ff3a32;
+  --secondary-color: #e2a528;
+  --secondary-alt-color: #0e0506;
+  --text-color: #5b5d5e;
+  --error-color: #771b1f;
+  --error-extra-color: #591317;
+}
+
+/* Modal backdrop */
+::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 32px auto;
+  height: fit-content;
+  min-height: calc(100vh - 374px);
+  width: 100%;
+  max-width: 1024px;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 28px;
+  user-select: none;
+}
+.containerBlurred {
+  position: relative;
+  composes: container;
+}
+.containerBlurred .word {
+  filter: blur(4px);
+}
+.blurText {
+  position: absolute;
+  display: grid;
+  align-items: center;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.word {
+  text-align: center;
+  display: inline-block;
+  height: fit-content;
+  margin: 2px 6px;
+  border-bottom: 2px solid transparent;
+}
+.wordError {
+  border-bottom: 2px solid var(--error-color);
+}
+.wordActive {
+  composes: word;
+}
+.letter {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.letterActive {
+  composes: letter;
+  position: relative;
+}
+.letterActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: var(--caret-color);
+  animation-name: caretFlash;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-iteration-count: infinite;
+}
+.letterCorrect {
+  color: var(--text-color);
+}
+.letterIncorrect {
+  color: var(--error-color);
+}
+.letterExtra {
+  color: var(--error-extra-color);
+}
+@keyframes caretFlash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.input {
+  opacity: 0;
+  width: 0px;
+  height: 0;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+
+.button {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--secondary-alt-color);
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(3px);
+}
+
+.button:hover {
+  background-color: var(--secondary-color);
+}

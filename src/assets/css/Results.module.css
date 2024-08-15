@@ -1,0 +1,195 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  min-height: calc(100vh - 374px);
+  margin: 40px auto;
+  padding: 0 8px;
+}
+.wpm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+.wpmLabel {
+  margin: 0;
+  margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+.wpmStat {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  font-weight: 400;
+  font-size: 64px;
+  cursor: pointer;
+  color: var(--main-color);
+}
+.wpmStat::before {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  text-wrap: nowrap;
+  top: -36px;
+  width: fit-content;
+  padding: 8px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background-color: rgba(16, 16, 16, 0.95);
+  content: attr(data-wpm);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.wpmStat::after {
+  display: block; width: 0; content: "";
+  border: 6px solid transparent;
+  position: absolute;
+  top: -3.1px;
+  left: calc(50% - 6px);
+  border-top-color: rgba(16, 16, 16, 0.95);
+  border-bottom: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.wpmStat:hover::before,
+.wpmStat:hover::after {
+  visibility: visible;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+}
+.box2 {
+  display: grid;
+  justify-content: center;
+  grid-row: 2/3;
+}
+.boxLabel {
+  margin: 0;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+.boxStat,
+.boxStatHover {
+  position: relative;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--main-color);
+  cursor: pointer;
+}
+.boxStatHover::before {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  top: -40px;
+  left: 0px;
+  width: fit-content;
+  text-wrap: nowrap;
+  padding: 8px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background-color: rgba(16, 16, 16, 0.95);
+  content: attr(data-wpm);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.boxStatHover::after {
+  display: block; width: 0; content: "";
+  border: 6px solid transparent;
+  position: absolute;
+  top: -7.1px;
+  left: 8px;
+  border-top-color: rgba(16, 16, 16, 0.95);
+  border-bottom: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.boxStatHover:hover::before,
+.boxStatHover:hover::after {
+  visibility: visible;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--secondary-color);
+  padding: 16px 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.button::before {
+  position: absolute;
+  bottom: -32px;
+  width: fit-content;
+  content: attr(data-title);
+  font-family: var(--font-family);
+  color: white;
+  background-color: rgba(16, 16, 16, 0.95);
+  text-wrap: nowrap;
+  padding: 8px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.button::after {
+  display: block; width: 0; content: "";
+  border: 6px solid transparent;
+  position: absolute;
+  bottom: -2px;
+  border-bottom-color: rgba(16, 16, 16, 0.95);
+  border-top: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+.button:hover {
+  fill: var(--main-color);
+}
+.button:hover::before,
+.button:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}

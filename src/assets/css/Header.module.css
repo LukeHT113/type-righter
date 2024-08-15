@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 4px 8px;
+  height: 72px;
+}
+.nav {
+  display: flex;
+  height: 100%;
+}
+.logo {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.logoImg {
+  height: 48px;
+  width: auto;
+}
+.logoText {
+  font-family: var(--font-family);
+  font-style: italic;
+  height: 56px;
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 400;
+  fill: aqua;
+}
+.logoText svg {
+  fill: aliceblue;
+}
+.navButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: fill 0.3s;
+}
+.navButton svg {
+  height: 24px;
+  width: 24px;
+  transition: fill 0.3s;
+  fill: var(--secondary-color);
+}
+.navButton:hover svg {
+  fill: var(--text-color);
+}
